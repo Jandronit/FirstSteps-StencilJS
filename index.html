@@ -10,6 +10,9 @@
         width: 200px;
         background-color: #eee;
     }
+    .highlight {
+        background-color: yellow;
+    }
     </style>
     <script src="tooltip.js"></script>
     <script src="confirm-link.js"></script>
@@ -17,7 +20,12 @@
     <template id="tooltip-template">
         
     </template>
-    <p><my-tooltip text="This is the tooltip text">Web Components</my-tooltip> are we awesome!</p>
+    <p>
+        <my-tooltip text="This is the tooltip text">
+        <span class="highlight">Web Components</span>
+        </my-tooltip>
+        are we awesome!
+    </p>
 
     <my-tooltip></my-tooltip>
 
