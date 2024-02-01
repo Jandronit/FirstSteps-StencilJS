@@ -18,6 +18,10 @@ class Tooltip extends HTMLElement {
         background: #ccc;
       }
 
+      :host-context(p) {
+        font-weight: bold;
+      }
+
       .highlight {
         background-color: red;
       }
@@ -25,6 +29,7 @@ class Tooltip extends HTMLElement {
       ::slotted(.highlight) {
         border-bottom: 1px dotted red;
       }
+      
       .icon {
         background: black;
         color: white;
