@@ -4,37 +4,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style> 
-
-    :root {
-        --color-primary: #00a2ff;
+    * {
+        box-sizing: border-box;
     }
-    
-    div {
-        border: 1px solid black;
-        padding: 10px;
-        width: 200px;
-        background-color: #eee;
+    html {
+        --color-primary: #9bcfee;
+        font-family: sans-serif;
     }
-
-    my-tooltip {
-        border: 1px solid black;
-        padding: 0.5rem;
-    }
-/* 
-    my-tooltip.important {
-        background-color: green;
-    } */
-/* 
-    .highlight {
-        background-color: yellow;
-    } */
     </style>
     <script src="tooltip.js"></script>
     <script src="confirm-link.js"></script>
 </head>
-    <template id="tooltip-template">
-        
-    </template>
+<body>
     <p>
         <my-tooltip class="important" text="This is the tooltip text">
         <span class="highlight">Web Components</span>
@@ -44,7 +25,6 @@
 
     <my-tooltip></my-tooltip>
 
-    <div>THIS DOES NOT GET THE WEB COMPONENTS STYLES!</div>
     <a is="confirm-link" href="https://www.google.com" >Google</a>
 </body>
 </html>
