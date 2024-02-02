@@ -29,7 +29,9 @@
         const modal = document.querySelector('my-modal');
 
         confirmButton.addEventListener('click', () => {
-            modal.setAttribute('opened', '');
+            if (!modal.isOpen) {
+                modal.open();
+            }
         });
     </script>
 </body>
