@@ -42,7 +42,7 @@ class Modal extends HTMLElement {
                 padding: 1rem;
                 border-bottom: 1px solid #ccc;
             }
-            header h1 {
+            ::slotted(h1) {
                 font-size: 1.25rem;
             }
 
@@ -64,10 +64,10 @@ class Modal extends HTMLElement {
         <div id="backdrop"></div>
         <div id="modal">
             <header>
-                <h1>Please confirm</h1>
+                <slot name="title">Please confirm payment</slot>
             </header>
             <section id="main">
-                <slot></slot>
+                <slot name="main"></slot>
             </section>
             <footer id="actions">
                 <button id="cancel-btn">Cancel</button>
