@@ -11,6 +11,8 @@ export namespace Components {
         "opened": boolean;
         "title": string;
     }
+    interface MySpinner {
+    }
     interface MyStockFinder {
     }
     interface MyStockPrice {
@@ -30,6 +32,12 @@ declare global {
     var HTMLMySideDrawerElement: {
         prototype: HTMLMySideDrawerElement;
         new (): HTMLMySideDrawerElement;
+    };
+    interface HTMLMySpinnerElement extends Components.MySpinner, HTMLStencilElement {
+    }
+    var HTMLMySpinnerElement: {
+        prototype: HTMLMySpinnerElement;
+        new (): HTMLMySpinnerElement;
     };
     interface HTMLMyStockFinderElementEventMap {
         "mySymbolSelected": string;
@@ -62,6 +70,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "my-side-drawer": HTMLMySideDrawerElement;
+        "my-spinner": HTMLMySpinnerElement;
         "my-stock-finder": HTMLMyStockFinderElement;
         "my-stock-price": HTMLMyStockPriceElement;
         "my-tooltip": HTMLMyTooltipElement;
@@ -71,6 +80,8 @@ declare namespace LocalJSX {
     interface MySideDrawer {
         "opened"?: boolean;
         "title"?: string;
+    }
+    interface MySpinner {
     }
     interface MyStockFinder {
         "onMySymbolSelected"?: (event: MyStockFinderCustomEvent<string>) => void;
@@ -83,6 +94,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "my-side-drawer": MySideDrawer;
+        "my-spinner": MySpinner;
         "my-stock-finder": MyStockFinder;
         "my-stock-price": MyStockPrice;
         "my-tooltip": MyTooltip;
@@ -93,6 +105,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-side-drawer": LocalJSX.MySideDrawer & JSXBase.HTMLAttributes<HTMLMySideDrawerElement>;
+            "my-spinner": LocalJSX.MySpinner & JSXBase.HTMLAttributes<HTMLMySpinnerElement>;
             "my-stock-finder": LocalJSX.MyStockFinder & JSXBase.HTMLAttributes<HTMLMyStockFinderElement>;
             "my-stock-price": LocalJSX.MyStockPrice & JSXBase.HTMLAttributes<HTMLMyStockPriceElement>;
             "my-tooltip": LocalJSX.MyTooltip & JSXBase.HTMLAttributes<HTMLMyTooltipElement>;

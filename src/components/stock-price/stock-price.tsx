@@ -123,7 +123,7 @@ export class StockPrice {
       dataContent = <strong>Price: ${this.fetchedPrice}</strong>;
     }
     if (this.loading) {
-      dataContent = <div class="lds-dual-ring"></div>
+      dataContent = <my-spinner></my-spinner>;
     }
     return [
       <form onSubmit={this.onFetchStockPrice.bind(this)}>
