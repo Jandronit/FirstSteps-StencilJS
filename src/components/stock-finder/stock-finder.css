@@ -42,3 +42,15 @@ form button:disabled {
   color: #666;
   cursor: not-allowed;
 }
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+}
