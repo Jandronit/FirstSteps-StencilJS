@@ -17,6 +17,7 @@ export class StockPrice {
   @State() stockUserInput: string;
   @State() stockInputValid: boolean;
   @State() error: string;
+  @State() loading: boolean;
 
   @Prop({mutable: true, reflect: true}) stockSymbol: string;
 
@@ -83,7 +84,7 @@ export class StockPrice {
     }
 
     fetchStockPrice(stockSymbol: string) {
-
+    this.loading = true;
     fetch(
       `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${stockSymbol}&apikey=${process.env.AV_API_KEY}`
       )
@@ -99,10 +100,12 @@ export class StockPrice {
         }
         this.error = null;
         this.fetchedPrice = +parsedRes['Global Quote']['05. price'];
+        this.loading = false;
       })
       .catch(err => {
         this.error = err.message;
         this.fetchedPrice = null;
+        this.loading = false;
       });
 
   }
@@ -119,6 +122,9 @@ export class StockPrice {
     if (this.fetchedPrice) {
       dataContent = <strong>Price: ${this.fetchedPrice}</strong>;
     }
+    if (this.loading) {
+      dataContent = <div class="lds-dual-ring"></div>
+    }
     return [
       <form onSubmit={this.onFetchStockPrice.bind(this)}>
         <input id='stock-symbol'
@@ -126,7 +132,7 @@ export class StockPrice {
          value={this.stockUserInput}
          onInput={this.onUserInput.bind(this)}/>
         <button type='submit'
-        disabled={!this.stockInputValid}
+        disabled={!this.stockInputValid || this.loading}
         >Fetch</button>
       </form>,
       <div>
