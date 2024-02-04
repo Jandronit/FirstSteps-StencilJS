@@ -8,6 +8,10 @@
   padding: 1rem;
 }
 
+:host(.error) {
+  border-color: orangered;
+}
+
 form input {
   font: inherit;
   color: #8400ff;

@@ -102,9 +102,14 @@ export class StockPrice {
       })
       .catch(err => {
         this.error = err.message;
+        this.fetchedPrice = null;
       });
 
   }
+
+    hostData() {
+      return { class: this.error ? 'error' : '' };
+    }
 
     render() {
     let dataContent = <strong>Please enter a symbol!</strong>;
