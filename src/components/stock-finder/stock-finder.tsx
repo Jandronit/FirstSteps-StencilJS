@@ -1,4 +1,4 @@
-import { Component, h, } from '@stencil/core';
+import { Component, State, h, } from '@stencil/core';
 
 @Component({
   tag: 'my-stock-finder',
@@ -10,13 +10,17 @@ export class StockFinder {
 
   stockNameInput: HTMLInputElement;
 
+  @State() searchResults: {name: string, symbol: string}[] = [];
+
   onFindStocks(event: Event) {
     event.preventDefault();
     const stockName = this.stockNameInput.value;
     fetch(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${stockName}&apikey=${process.env.AV_API_KEY}`)
     .then(res => res.json())
     .then(data => {
-      console.log(data);
+      this.searchResults = data['bestMatches'].map(match => {
+        return { name: match['2. name'], symbol: match['1. symbol'] };
+      });
     })
     .catch(err => {
       console.log(err);
@@ -29,7 +33,14 @@ export class StockFinder {
         <input id="stock-symbol"
          ref={el => this.stockNameInput = el } />
         <button type="submit">Find</button>
-      </form>
+      </form>,
+      <ul>
+        {this.searchResults.map(result => (
+          <li>
+            <strong>{result.symbol}</strong> - {result.name}
+          </li>
+        ))}
+      </ul>
     ];
   }
 }
