@@ -4,12 +4,33 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Stencil Component Starter</title>
-
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      .side-nav ul  {
+        list-style: none;
+      }
+      .side-nav li {
+        margin: 1rem 0;
+      }
+      .side-nav a {
+        text-decoration: none;
+        color: black;
+      }
+    </style>
     <script type="module" src="/build/firststeps-stenciljs.esm.js"></script>
     <script nomodule src="/build/firststeps-stenciljs.js"></script>
   </head>
   <body>
-    <my-side-drawer title="Main Menu"/>
+    <my-side-drawer title="Main Menu">
+      <nav class="side-nav">
+        <ul>
+          <li><a href="/">Navigation</a></li>
+          <li><a href="/">Help</a></li>
+        </ul>
+      </nav>
+    </my-side-drawer>
 
     <script>
       const sideDrawer = document.querySelector('my-side-drawer');

@@ -7,4 +7,16 @@
   height: 100vh;
   background: #fff;
   box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.5);
+
  }
+
+ header {
+  padding: 1rem;
+  background: black;
+ }
+
+  header h1 {
+    font-size: 2rem;
+    color: white;
+    margin: 0;
+  }
