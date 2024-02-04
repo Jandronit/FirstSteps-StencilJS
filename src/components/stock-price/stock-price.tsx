@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, Watch } from '@stencil/core';
+import { Component, h } from '@stencil/core';
 
 @Component({
   tag: 'my-stock-price',
