@@ -12,6 +12,7 @@ export namespace Components {
         "title": string;
     }
     interface MyStockPrice {
+        "stockSymbol": string;
     }
     interface MyTooltip {
         "text": string;
@@ -48,6 +49,7 @@ declare namespace LocalJSX {
         "title"?: string;
     }
     interface MyStockPrice {
+        "stockSymbol"?: string;
     }
     interface MyTooltip {
         "text"?: string;

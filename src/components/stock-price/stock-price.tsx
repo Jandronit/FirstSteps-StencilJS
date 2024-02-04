@@ -1,4 +1,4 @@
-import { Component, State, h, Element } from '@stencil/core';
+import { Component, State, h, Element, Prop } from '@stencil/core';
 
 @Component({
   tag: 'my-stock-price',
@@ -17,6 +17,8 @@ export class StockPrice {
   @State() stockInputValid: boolean;
   @State() error: string;
 
+  @Prop({mutable: true, reflect: true}) stockSymbol: string;
+
   onUserInput(event: Event) {
     this.stockUserInput = (event.target as HTMLInputElement).value;
     if (this.stockUserInput.trim() !== '') {
@@ -30,6 +32,16 @@ export class StockPrice {
     event.preventDefault();
     // const stockSymbol = (this.el.shadowRoot.querySelector('#stock-symbol') as HTMLInputElement).value;
     const stockSymbol = this.stockInput.value;
+    this.fetchStockPrice(stockSymbol);
+    }
+
+    componentDidLoad() {
+      if (this.stockSymbol) {
+        this.fetchStockPrice(this.stockSymbol);
+      }
+    }
+
+    fetchStockPrice(stockSymbol: string) {
 
     fetch(
       `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${stockSymbol}&apikey=${process.env.AV_API_KEY}`
@@ -51,10 +63,9 @@ export class StockPrice {
         this.error = err.message;
       });
 
-    }
+  }
 
-
-  render() {
+    render() {
     let dataContent = <strong>Please enter a symbol!</strong>;
     if (this.error) {
       dataContent = <p>{this.error}</p>;
