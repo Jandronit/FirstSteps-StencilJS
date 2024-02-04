@@ -11,10 +11,10 @@ export namespace Components {
         "opened": boolean;
         "title": string;
     }
+    interface MyStockPrice {
+    }
     interface MyTooltip {
         "text": string;
-    }
-    interface StockPrice {
     }
 }
 declare global {
@@ -24,22 +24,22 @@ declare global {
         prototype: HTMLMySideDrawerElement;
         new (): HTMLMySideDrawerElement;
     };
+    interface HTMLMyStockPriceElement extends Components.MyStockPrice, HTMLStencilElement {
+    }
+    var HTMLMyStockPriceElement: {
+        prototype: HTMLMyStockPriceElement;
+        new (): HTMLMyStockPriceElement;
+    };
     interface HTMLMyTooltipElement extends Components.MyTooltip, HTMLStencilElement {
     }
     var HTMLMyTooltipElement: {
         prototype: HTMLMyTooltipElement;
         new (): HTMLMyTooltipElement;
     };
-    interface HTMLStockPriceElement extends Components.StockPrice, HTMLStencilElement {
-    }
-    var HTMLStockPriceElement: {
-        prototype: HTMLStockPriceElement;
-        new (): HTMLStockPriceElement;
-    };
     interface HTMLElementTagNameMap {
         "my-side-drawer": HTMLMySideDrawerElement;
+        "my-stock-price": HTMLMyStockPriceElement;
         "my-tooltip": HTMLMyTooltipElement;
-        "stock-price": HTMLStockPriceElement;
     }
 }
 declare namespace LocalJSX {
@@ -47,15 +47,15 @@ declare namespace LocalJSX {
         "opened"?: boolean;
         "title"?: string;
     }
+    interface MyStockPrice {
+    }
     interface MyTooltip {
         "text"?: string;
     }
-    interface StockPrice {
-    }
     interface IntrinsicElements {
         "my-side-drawer": MySideDrawer;
+        "my-stock-price": MyStockPrice;
         "my-tooltip": MyTooltip;
-        "stock-price": StockPrice;
     }
 }
 export { LocalJSX as JSX };
@@ -63,8 +63,8 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-side-drawer": LocalJSX.MySideDrawer & JSXBase.HTMLAttributes<HTMLMySideDrawerElement>;
+            "my-stock-price": LocalJSX.MyStockPrice & JSXBase.HTMLAttributes<HTMLMyStockPriceElement>;
             "my-tooltip": LocalJSX.MyTooltip & JSXBase.HTMLAttributes<HTMLMyTooltipElement>;
-            "stock-price": LocalJSX.StockPrice & JSXBase.HTMLAttributes<HTMLStockPriceElement>;
         }
     }
 }
