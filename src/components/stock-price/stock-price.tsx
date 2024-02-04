@@ -9,6 +9,7 @@ import { Component, State, h, Element, Prop } from '@stencil/core';
 export class StockPrice {
 
   stockInput: HTMLInputElement;
+  initialStockSymbol: string;
 
   @Element() el: HTMLElement;
 
@@ -43,6 +44,9 @@ export class StockPrice {
     componentDidLoad() {
       console.log('componentDidLoad');
       if (this.stockSymbol) {
+        this.initialStockSymbol = this.stockSymbol;
+        this.stockUserInput = this.stockSymbol;
+        this.stockInputValid = true;
         this.fetchStockPrice(this.stockSymbol);
       }
     }
@@ -53,6 +57,10 @@ export class StockPrice {
 
     componentDidUpdate() {
       console.log('componentDidUpdate');
+      if (this.stockSymbol !== this.initialStockSymbol) {
+        this.initialStockSymbol = this.stockSymbol;
+        this.fetchStockPrice(this.stockSymbol);
+      }
     }
 
     disconnectedCallback() {
