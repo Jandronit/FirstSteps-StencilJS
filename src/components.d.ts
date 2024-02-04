@@ -11,6 +11,9 @@ export namespace Components {
         "opened": boolean;
         "title": string;
     }
+    interface MyTooltip {
+        "text": string;
+    }
 }
 declare global {
     interface HTMLMySideDrawerElement extends Components.MySideDrawer, HTMLStencilElement {
@@ -19,8 +22,15 @@ declare global {
         prototype: HTMLMySideDrawerElement;
         new (): HTMLMySideDrawerElement;
     };
+    interface HTMLMyTooltipElement extends Components.MyTooltip, HTMLStencilElement {
+    }
+    var HTMLMyTooltipElement: {
+        prototype: HTMLMyTooltipElement;
+        new (): HTMLMyTooltipElement;
+    };
     interface HTMLElementTagNameMap {
         "my-side-drawer": HTMLMySideDrawerElement;
+        "my-tooltip": HTMLMyTooltipElement;
     }
 }
 declare namespace LocalJSX {
@@ -28,8 +38,12 @@ declare namespace LocalJSX {
         "opened"?: boolean;
         "title"?: string;
     }
+    interface MyTooltip {
+        "text"?: string;
+    }
     interface IntrinsicElements {
         "my-side-drawer": MySideDrawer;
+        "my-tooltip": MyTooltip;
     }
 }
 export { LocalJSX as JSX };
@@ -37,6 +51,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-side-drawer": LocalJSX.MySideDrawer & JSXBase.HTMLAttributes<HTMLMySideDrawerElement>;
+            "my-tooltip": LocalJSX.MyTooltip & JSXBase.HTMLAttributes<HTMLMyTooltipElement>;
         }
     }
 }

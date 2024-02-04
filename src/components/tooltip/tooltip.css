@@ -1,0 +1,22 @@
+:host {
+  position: relative;
+}
+
+#tooltip-icon {
+  background: black;
+  color: white;
+  padding: 0.15rem 0.5rem;
+  border-radius: 50%;
+  margin-left: 0.5rem;
+}
+
+#tooltip-text {
+  position: absolute;
+  background: black;
+  color: white;
+  top: 1.5rem;
+  left: 1rem;
+  width: 10rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
