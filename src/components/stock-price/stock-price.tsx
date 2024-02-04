@@ -8,6 +8,7 @@ import { Component, State, h, Element } from '@stencil/core';
 
 export class StockPrice {
 
+  stockInput: HTMLInputElement;
 
   @Element() el: HTMLElement;
 
@@ -15,7 +16,9 @@ export class StockPrice {
 
   onFetchStockPrice(event: Event) {
     event.preventDefault();
-    const stockSymbol = (this.el.shadowRoot.querySelector('#stock-symbol') as HTMLInputElement).value;
+    // const stockSymbol = (this.el.shadowRoot.querySelector('#stock-symbol') as HTMLInputElement).value;
+    const stockSymbol = this.stockInput.value;
+
     fetch(
       `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${stockSymbol}&apikey=${process.env.AV_API_KEY}`
       )
@@ -35,7 +38,7 @@ export class StockPrice {
   render() {
     return [
       <form onSubmit={this.onFetchStockPrice.bind(this)}>
-        <input id='stock-symbol'/>
+        <input id='stock-symbol' ref={el => this.stockInput = el}/>
         <button type='submit'>Fetch</button>
       </form>,
       <div>
