@@ -11,6 +11,8 @@ export namespace Components {
         "opened": boolean;
         "title": string;
     }
+    interface MyStockFinder {
+    }
     interface MyStockPrice {
         "stockSymbol": string;
     }
@@ -24,6 +26,12 @@ declare global {
     var HTMLMySideDrawerElement: {
         prototype: HTMLMySideDrawerElement;
         new (): HTMLMySideDrawerElement;
+    };
+    interface HTMLMyStockFinderElement extends Components.MyStockFinder, HTMLStencilElement {
+    }
+    var HTMLMyStockFinderElement: {
+        prototype: HTMLMyStockFinderElement;
+        new (): HTMLMyStockFinderElement;
     };
     interface HTMLMyStockPriceElement extends Components.MyStockPrice, HTMLStencilElement {
     }
@@ -39,6 +47,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "my-side-drawer": HTMLMySideDrawerElement;
+        "my-stock-finder": HTMLMyStockFinderElement;
         "my-stock-price": HTMLMyStockPriceElement;
         "my-tooltip": HTMLMyTooltipElement;
     }
@@ -48,6 +57,8 @@ declare namespace LocalJSX {
         "opened"?: boolean;
         "title"?: string;
     }
+    interface MyStockFinder {
+    }
     interface MyStockPrice {
         "stockSymbol"?: string;
     }
@@ -56,6 +67,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "my-side-drawer": MySideDrawer;
+        "my-stock-finder": MyStockFinder;
         "my-stock-price": MyStockPrice;
         "my-tooltip": MyTooltip;
     }
@@ -65,6 +77,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-side-drawer": LocalJSX.MySideDrawer & JSXBase.HTMLAttributes<HTMLMySideDrawerElement>;
+            "my-stock-finder": LocalJSX.MyStockFinder & JSXBase.HTMLAttributes<HTMLMyStockFinderElement>;
             "my-stock-price": LocalJSX.MyStockPrice & JSXBase.HTMLAttributes<HTMLMyStockPriceElement>;
             "my-tooltip": LocalJSX.MyTooltip & JSXBase.HTMLAttributes<HTMLMyTooltipElement>;
         }
