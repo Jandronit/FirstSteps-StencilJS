@@ -7,9 +7,14 @@ import { Component, h, State, Prop, Watch } from '@stencil/core';
 })
 
 export class StockPrice {
+
+  onFetchStockPrice(event: Event) {
+    event.preventDefault();
+
+  }
   render() {
     return [
-      <form>
+      <form onSubmit={this.onFetchStockPrice.bind(this)}>
         <input id='stock-symbol'/>
         <button type='submit'>Fetch</button>
       </form>,
