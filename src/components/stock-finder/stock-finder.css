@@ -4,7 +4,7 @@
   width: 20rem;
   max-width: 100%;
   margin: 2rem;
-  border: 2px solid #8400ff;
+  border: 2px solid var(--color-primary, black);
   padding: 1rem;
 }
 
@@ -24,16 +24,16 @@ form button:focus{
 form button {
   font: inherit;
   padding: 0.25rem 0.5rem;
-  border: 1px solid #8400ff;
-  background: #8400ff;
-  color: white;
+  border: 1px solid var(--color-primary, black);
+  background: var(--color-primary, black);
+  color: var(--color-primary-inverse, white);
   cursor: pointer;
 }
 
 form button:hover,
 form button:active {
-  border-color: #5200cc;
-  background: #5200cc;
+  border-color: var(--color-primary-highlight, #5200cc);
+  background: var(--color-primary-highlight, #5200cc);
 }
 
 form button:disabled {
@@ -58,6 +58,7 @@ li {
 
 li:hover,
 li:active {
-  background: #f4f4f4;
+  background: var(--color-primary, black);
+  color: var(--color-primary-inverse, white);
   cursor: pointer;
 }
