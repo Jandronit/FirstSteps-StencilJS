@@ -1,5 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
-import { log } from 'console';
+import { Component, Prop, h, State } from '@stencil/core';
 @Component({
   tag: 'my-side-drawer',
   styleUrl: './side-drawer.css',
@@ -7,6 +6,8 @@ import { log } from 'console';
 
 })
 export class SideDrawer {
+  @State() showContactInfo: boolean = false;
+
   @Prop({ reflect: true }) title: string;
   @Prop({ reflect: true, mutable: true }) open: boolean;
 
@@ -16,12 +17,12 @@ export class SideDrawer {
   }
 
   onContentChange(content: string) {
-  console.log(content);
-
+    this.showContactInfo = content === 'contact';
   }
 
   render() {
     let mainContent = <slot />;
+    if (this.showContactInfo) {
     mainContent = (
       <div id="contact-information">
       <h2>Contact Information</h2>
@@ -35,6 +36,7 @@ export class SideDrawer {
       </ul>
       </div>
     );
+  }
     return (
     <aside>
     <header>
@@ -42,8 +44,8 @@ export class SideDrawer {
       <button onClick={this.onCloseDrawer.bind(this)}>X</button>
     </header>
     <section id="tabs">
-      <button class="active" onClick={this.onContentChange.bind(this, 'nav')}>Navigation</button>
-      <button onClick={this.onContentChange.bind(this, 'contact')}>Contact</button>
+      <button class={!this.showContactInfo ? 'active': ''} onClick={this.onContentChange.bind(this, 'nav')}>Navigation</button>
+      <button class={this.showContactInfo ? 'active': ''} onClick={this.onContentChange.bind(this, 'contact')}>Contact</button>
     </section>
     <main>
       {mainContent}
