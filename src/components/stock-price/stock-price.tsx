@@ -8,12 +8,14 @@ import { Component, State, h } from '@stencil/core';
 
 export class StockPrice {
 
+
+
   @State() fetchedPrice: number;
 
   onFetchStockPrice(event: Event) {
     event.preventDefault();
     fetch(
-      'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=demo'
+      `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=${process.env.AV_API_KEY}`
       )
       .then(res => {
         return res.json();

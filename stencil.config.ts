@@ -1,4 +1,5 @@
 import { Config } from '@stencil/core';
+import dotenv from "rollup-plugin-dotenv"
 
 export const config: Config = {
   namespace: 'firststeps-stenciljs',
@@ -17,6 +18,9 @@ export const config: Config = {
       type: 'www',
       serviceWorker: null, // disable service workers
     },
+  ],
+  plugins: [
+    dotenv(),
   ],
   testing: {
     browserHeadless: "new",
