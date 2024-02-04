@@ -1,4 +1,4 @@
-import { Component, State, h, Element, Prop, Watch } from '@stencil/core';
+import { Component, State, h, Element, Prop, Watch, Listen } from '@stencil/core';
 
 @Component({
   tag: 'my-stock-price',
@@ -73,6 +73,13 @@ export class StockPrice {
 
     disconnectedCallback() {
       console.log('disconnectedCallback');
+    }
+
+    @Listen('mySymbolSelected', { target: 'body' })
+    onStockSymbolSelected(event: CustomEvent) {
+      if (event.detail && event.detail !== this.stockSymbol) {
+        this.stockSymbol = event.detail;
+      }
     }
 
     fetchStockPrice(stockSymbol: string) {
