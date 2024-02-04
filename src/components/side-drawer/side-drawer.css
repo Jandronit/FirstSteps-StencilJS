@@ -17,6 +17,7 @@
  header {
   padding: 1rem;
   background: black;
+  position: relative;
  }
 
   header h1 {
@@ -24,3 +25,19 @@
     color: white;
     margin: 0;
   }
+
+  header button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    border: none;
+  }
+header button:focus {
+  outline: none;
+}
