@@ -37,10 +37,8 @@
       const sideDrawerToggleButton = document.querySelector('#side-drawer-toggle');
       const sideDrawer = document.querySelector('my-side-drawer');
       sideDrawerToggleButton.addEventListener('click', () => {
-        if (!sideDrawer.open) {
-          sideDrawer.open = true;
-        } else {
-          sideDrawer.open = false;
+        if (!sideDrawer.opened) {
+          sideDrawer.open();
         }
       });
       setTimeout(() => {
