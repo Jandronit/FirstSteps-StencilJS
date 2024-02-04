@@ -22,6 +22,7 @@
     <script type="module" src="/build/firststeps-stenciljs.esm.js"></script>
     <script nomodule src="/build/firststeps-stenciljs.js"></script>
   </head>
+  <button id="side-drawer-toggle" >Toggle Side Drawer</button>
   <body>
     <my-side-drawer title="Main Menu">
       <nav class="side-nav">
@@ -33,7 +34,15 @@
     </my-side-drawer>
 
     <script>
+      const sideDrawerToggleButton = document.querySelector('#side-drawer-toggle');
       const sideDrawer = document.querySelector('my-side-drawer');
+      sideDrawerToggleButton.addEventListener('click', () => {
+        if (!sideDrawer.open) {
+          sideDrawer.open = true;
+        } else {
+          sideDrawer.open = false;
+        }
+      });
       setTimeout(() => {
         sideDrawer.title = 'Changed';
         // sideDrawer.setAttribute('title', 'Changed by attribute');
