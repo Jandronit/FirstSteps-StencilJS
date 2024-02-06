@@ -9,7 +9,7 @@ export namespace Components {
     interface MySideDrawer {
         "open": () => Promise<void>;
         "opened": boolean;
-        "title": string;
+        "titleSlide": string;
     }
     interface MySpinner {
     }
@@ -79,7 +79,7 @@ declare global {
 declare namespace LocalJSX {
     interface MySideDrawer {
         "opened"?: boolean;
-        "title"?: string;
+        "titleSlide"?: string;
     }
     interface MySpinner {
     }
